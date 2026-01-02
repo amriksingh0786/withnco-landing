@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FAF9F7;
+  --foreground: #1A1A1A;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+}
+
+/* Selection styling */
+::selection {
+  background-color: #C67B5C;
+  color: #FAF9F7;
+}
+
+/* Focus styling */
+:focus-visible {
+  outline: 2px solid #C67B5C;
+  outline-offset: 2px;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-16 md:py-24 lg:py-32;
+  }
+
+  .container-site {
+    @apply max-w-site mx-auto px-6 md:px-8;
+  }
+
+  .prose-content {
+    @apply max-w-content;
+  }
+}
