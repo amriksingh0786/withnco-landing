@@ -5,6 +5,17 @@
 :root {
   --background: #FAF9F7;
   --foreground: #1A1A1A;
+  --stone: #A39E93;
+  --terracotta: #C67B5C;
+  --soft-cream: #F5F3EF;
+}
+
+.dark {
+  --background: #121212;
+  --foreground: #FAF9F7;
+  --stone: #9A9590;
+  --terracotta: #D4896C;
+  --soft-cream: #1E1E1E;
 }
 
 html {
@@ -14,17 +25,18 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Selection styling */
 ::selection {
-  background-color: #C67B5C;
+  background-color: var(--terracotta);
   color: #FAF9F7;
 }
 
 /* Focus styling */
 :focus-visible {
-  outline: 2px solid #C67B5C;
+  outline: 2px solid var(--terracotta);
   outline-offset: 2px;
 }
 

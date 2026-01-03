@@ -104,7 +104,7 @@ export default function ContactPage() {
               <div className="w-16 h-16 bg-terracotta/10 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Check className="w-8 h-8 text-terracotta" />
               </div>
-              <h1 className="font-heading text-heading-1 text-off-black mb-4">
+              <h1 className="font-heading text-heading-1 text-off-black dark:text-warm-white mb-4">
                 Got it.
               </h1>
               <p className="text-body text-stone max-w-md mx-auto">
@@ -215,8 +215,8 @@ export default function ContactPage() {
                 className="space-y-8"
               >
                 {/* Alternative Contact */}
-                <div className="bg-soft-cream rounded-lg p-6">
-                  <h3 className="font-heading text-heading-3 text-off-black mb-4">
+                <div className="bg-soft-cream dark:bg-dark-surface rounded-lg p-6">
+                  <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mb-4">
                     Prefer email?
                   </h3>
                   <p className="text-body-sm text-stone mb-2">
@@ -231,8 +231,8 @@ export default function ContactPage() {
                 </div>
 
                 {/* What happens next */}
-                <div className="bg-soft-cream rounded-lg p-6">
-                  <h3 className="font-heading text-heading-3 text-off-black mb-4">
+                <div className="bg-soft-cream dark:bg-dark-surface rounded-lg p-6">
+                  <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mb-4">
                     What happens next
                   </h3>
                   <ol className="space-y-3">
@@ -255,13 +255,13 @@ export default function ContactPage() {
 
                 {/* FAQ */}
                 <div>
-                  <h3 className="font-heading text-heading-3 text-off-black mb-6">
+                  <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mb-6">
                     FAQ
                   </h3>
                   <div className="space-y-6">
                     {faqs.map((faq) => (
                       <div key={faq.question}>
-                        <h4 className="text-body-sm font-medium text-off-black mb-1">
+                        <h4 className="text-body-sm font-medium text-off-black dark:text-warm-white mb-1">
                           {faq.question}
                         </h4>
                         <p className="text-small text-stone">{faq.answer}</p>

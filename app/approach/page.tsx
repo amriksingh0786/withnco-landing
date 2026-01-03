@@ -100,7 +100,7 @@ export default function ApproachPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="font-heading text-heading-2 md:text-heading-1 text-off-black mb-16"
+            className="font-heading text-heading-2 md:text-heading-1 text-off-black dark:text-warm-white mb-16"
           >
             How we think
           </motion.h2>
@@ -119,7 +119,7 @@ export default function ApproachPage() {
                   <span className="font-mono text-small text-terracotta">
                     0{index + 1}
                   </span>
-                  <h3 className="font-heading text-heading-3 text-off-black mt-2">
+                  <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mt-2">
                     {principle.title}
                   </h3>
                 </div>
@@ -137,14 +137,14 @@ export default function ApproachPage() {
       </section>
 
       {/* Phases */}
-      <section className="section-padding bg-soft-cream">
+      <section className="section-padding bg-soft-cream dark:bg-dark-surface">
         <div className="container-site">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="font-heading text-heading-2 md:text-heading-1 text-off-black mb-16"
+            className="font-heading text-heading-2 md:text-heading-1 text-off-black dark:text-warm-white mb-16"
           >
             What working with us looks like
           </motion.h2>
@@ -157,14 +157,14 @@ export default function ApproachPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-warm-white rounded-lg p-8 md:p-12"
+                className="bg-warm-white dark:bg-dark-elevated rounded-lg p-8 md:p-12"
               >
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-6">
                   <div>
                     <span className="font-mono text-small text-terracotta">
                       Phase {index + 1}
                     </span>
-                    <h3 className="font-heading text-heading-2 text-off-black">
+                    <h3 className="font-heading text-heading-2 text-off-black dark:text-warm-white">
                       {phase.name}
                     </h3>
                   </div>
@@ -185,7 +185,7 @@ export default function ApproachPage() {
                   ))}
                 </ul>
 
-                <p className="text-body font-medium text-off-black border-t border-stone/10 pt-6">
+                <p className="text-body font-medium text-off-black dark:text-warm-white border-t border-stone/10 dark:border-stone/20 pt-6">
                   <span className="text-terracotta">Outcome:</span>{" "}
                   {phase.outcome}
                 </p>

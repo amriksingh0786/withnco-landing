@@ -74,7 +74,7 @@ export default function WorkPage() {
               >
                 {/* Placeholder for project image */}
                 <div className="lg:col-span-5">
-                  <div className="aspect-[4/3] bg-soft-cream rounded-lg flex items-center justify-center border border-stone/10">
+                  <div className="aspect-[4/3] bg-soft-cream dark:bg-dark-surface rounded-lg flex items-center justify-center border border-stone/10 dark:border-stone/20">
                     <span className="text-stone text-small">Project Preview</span>
                   </div>
                 </div>
@@ -83,21 +83,21 @@ export default function WorkPage() {
                   <span className="text-small text-terracotta font-mono">
                     Case Study {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h2 className="font-heading text-heading-2 text-off-black mt-2 mb-2">
+                  <h2 className="font-heading text-heading-2 text-off-black dark:text-warm-white mt-2 mb-2">
                     {study.title}
                   </h2>
                   <p className="text-body-sm text-stone mb-6">{study.client}</p>
 
                   <div className="space-y-6">
                     <div>
-                      <h3 className="font-heading text-heading-3 text-off-black mb-2">
+                      <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mb-2">
                         The challenge
                       </h3>
                       <p className="text-body-sm text-stone">{study.challenge}</p>
                     </div>
 
                     <div>
-                      <h3 className="font-heading text-heading-3 text-off-black mb-2">
+                      <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mb-2">
                         What we built
                       </h3>
                       <ul className="space-y-2">
@@ -114,14 +114,14 @@ export default function WorkPage() {
                     </div>
 
                     <div>
-                      <h3 className="font-heading text-heading-3 text-off-black mb-2">
+                      <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mb-2">
                         Tech
                       </h3>
                       <div className="flex flex-wrap gap-2">
                         {study.tech.map((tech) => (
                           <span
                             key={tech}
-                            className="px-3 py-1 bg-soft-cream text-small text-stone rounded"
+                            className="px-3 py-1 bg-soft-cream dark:bg-dark-surface text-small text-stone rounded"
                           >
                             {tech}
                           </span>
@@ -129,11 +129,11 @@ export default function WorkPage() {
                       </div>
                     </div>
 
-                    <div className="border-t border-stone/10 pt-6">
-                      <h3 className="font-heading text-heading-3 text-off-black mb-2">
+                    <div className="border-t border-stone/10 dark:border-stone/20 pt-6">
+                      <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mb-2">
                         The outcome
                       </h3>
-                      <p className="text-body text-off-black font-medium">
+                      <p className="text-body text-off-black dark:text-warm-white font-medium">
                         {study.outcome}
                       </p>
                     </div>

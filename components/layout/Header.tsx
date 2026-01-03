@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -31,7 +32,7 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-warm-white/90 backdrop-blur-md shadow-sm"
+          ? "bg-warm-white/90 dark:bg-dark-bg/90 backdrop-blur-md shadow-sm dark:shadow-none dark:border-b dark:border-stone/10"
           : "bg-transparent"
       )}
     >
@@ -40,7 +41,7 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="font-heading text-xl font-bold text-off-black hover:text-terracotta transition-colors"
+            className="font-heading text-xl font-bold text-off-black dark:text-warm-white hover:text-terracotta transition-colors"
           >
             with<span className="text-terracotta">&amp;</span>co
           </Link>
@@ -51,40 +52,44 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-body-sm text-off-black hover:text-terracotta transition-colors"
+                className="text-body-sm text-off-black dark:text-warm-white hover:text-terracotta transition-colors"
               >
                 {link.label}
               </Link>
             ))}
+            <ThemeToggle />
             <Button href="/contact" size="sm">
               Let&apos;s Talk
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-off-black"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMobileMenuOpen ? (
-              <X className="w-6 h-6" />
-            ) : (
-              <Menu className="w-6 h-6" />
-            )}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button
+              className="p-2 text-off-black dark:text-warm-white"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 top-20 bg-warm-white z-40">
+        <div className="md:hidden fixed inset-0 top-20 bg-warm-white dark:bg-dark-bg z-40">
           <nav className="container-site py-8 flex flex-col gap-6">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-heading-3 font-heading text-off-black hover:text-terracotta transition-colors"
+                className="text-heading-3 font-heading text-off-black dark:text-warm-white hover:text-terracotta transition-colors"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}

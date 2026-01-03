@@ -14,14 +14,14 @@ interface CTASectionProps {
 
 export function CTASection({ title, subtitle, cta }: CTASectionProps) {
   return (
-    <section className="section-padding bg-soft-cream">
+    <section className="section-padding bg-soft-cream dark:bg-dark-surface">
       <div className="container-site text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="font-heading text-heading-2 md:text-heading-1 text-off-black mb-4"
+          className="font-heading text-heading-2 md:text-heading-1 text-off-black dark:text-warm-white mb-4"
         >
           {title}
         </motion.h2>

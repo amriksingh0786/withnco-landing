@@ -105,7 +105,7 @@ export default function ServicesPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="font-heading text-heading-2 md:text-heading-1 text-off-black mb-12"
+            className="font-heading text-heading-2 md:text-heading-1 text-off-black dark:text-warm-white mb-12"
           >
             Our services
           </motion.h2>
@@ -120,7 +120,7 @@ export default function ServicesPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <Card className="h-full">
-                  <h3 className="font-heading text-heading-3 text-off-black mb-3">
+                  <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mb-3">
                     {service.title}
                   </h3>
                   <p className="text-body-sm text-stone mb-6">
@@ -148,7 +148,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Tech Stack */}
-      <section className="section-padding bg-soft-cream">
+      <section className="section-padding bg-soft-cream dark:bg-dark-surface">
         <div className="container-site">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -157,7 +157,7 @@ export default function ServicesPage() {
             transition={{ duration: 0.5 }}
             className="mb-12"
           >
-            <h2 className="font-heading text-heading-2 md:text-heading-1 text-off-black mb-4">
+            <h2 className="font-heading text-heading-2 md:text-heading-1 text-off-black dark:text-warm-white mb-4">
               Technologies we love
             </h2>
             <p className="text-body text-stone max-w-2xl">
@@ -176,14 +176,14 @@ export default function ServicesPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <h3 className="font-heading text-heading-3 text-off-black mb-4">
+                <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mb-4">
                   {category}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-3 py-1 bg-warm-white text-small text-stone rounded border border-stone/10"
+                      className="px-3 py-1 bg-warm-white dark:bg-dark-elevated text-small text-stone rounded border border-stone/10 dark:border-stone/20"
                     >
                       {tech}
                     </span>

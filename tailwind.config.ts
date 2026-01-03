@@ -6,15 +6,20 @@ const config: Config = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        // Warm Neutral palette
+        // Warm Neutral palette - Light mode
         'off-black': '#1A1A1A',
         'warm-white': '#FAF9F7',
         'stone': '#A39E93',
         'terracotta': '#C67B5C',
         'soft-cream': '#F5F3EF',
+        // Dark mode additions
+        'dark-bg': '#121212',
+        'dark-surface': '#1E1E1E',
+        'dark-elevated': '#2A2A2A',
         // Semantic colors
         background: "var(--background)",
         foreground: "var(--foreground)",

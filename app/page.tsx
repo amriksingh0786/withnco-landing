@@ -102,7 +102,7 @@ export default function Home() {
       />
 
       {/* Trust Bar */}
-      <section className="py-8 border-y border-stone/10">
+      <section className="py-8 border-y border-stone/10 dark:border-stone/20">
         <div className="container-site">
           <p className="text-center text-stone italic">
             For startups who&apos;d rather build than manage vendors
@@ -118,7 +118,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="font-heading text-heading-2 md:text-heading-1 text-off-black mb-12 text-center"
+            className="font-heading text-heading-2 md:text-heading-1 text-off-black dark:text-warm-white mb-12 text-center"
           >
             Build. Scale. Partner.
           </motion.h2>
@@ -142,7 +142,7 @@ export default function Home() {
       </section>
 
       {/* The Difference */}
-      <section className="section-padding bg-soft-cream">
+      <section className="section-padding bg-soft-cream dark:bg-dark-surface">
         <div className="container-site">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -151,7 +151,7 @@ export default function Home() {
             transition={{ duration: 0.5 }}
             className="max-w-2xl mb-12"
           >
-            <h2 className="font-heading text-heading-2 md:text-heading-1 text-off-black mb-4">
+            <h2 className="font-heading text-heading-2 md:text-heading-1 text-off-black dark:text-warm-white mb-4">
               Not another dev shop
             </h2>
             <p className="text-body text-stone">
@@ -168,7 +168,7 @@ export default function Home() {
                   <th className="text-left py-4 pr-4 font-heading text-heading-3 text-stone">
                     The usual agency
                   </th>
-                  <th className="text-left py-4 pl-4 font-heading text-heading-3 text-off-black">
+                  <th className="text-left py-4 pl-4 font-heading text-heading-3 text-off-black dark:text-warm-white">
                     withnco
                   </th>
                 </tr>
@@ -181,7 +181,7 @@ export default function Home() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.05 }}
-                    className="border-b border-stone/10"
+                    className="border-b border-stone/10 dark:border-stone/20"
                   >
                     <td className="py-4 pr-4 text-body-sm text-stone">
                       <div className="flex items-start gap-2">
@@ -189,7 +189,7 @@ export default function Home() {
                         {row.agency}
                       </div>
                     </td>
-                    <td className="py-4 pl-4 text-body-sm text-off-black font-medium">
+                    <td className="py-4 pl-4 text-body-sm text-off-black dark:text-warm-white font-medium">
                       <div className="flex items-start gap-2">
                         <Check className="w-5 h-5 text-terracotta mt-0.5 flex-shrink-0" />
                         {row.withnco}
@@ -211,7 +211,7 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="font-heading text-heading-2 md:text-heading-1 text-off-black mb-4 text-center"
+            className="font-heading text-heading-2 md:text-heading-1 text-off-black dark:text-warm-white mb-4 text-center"
           >
             Simple, transparent, human
           </motion.h2>
@@ -243,7 +243,7 @@ export default function Home() {
                 <span className="font-mono text-6xl text-stone/20 font-bold">
                   {item.step}
                 </span>
-                <h3 className="font-heading text-heading-3 text-off-black mt-2 mb-2">
+                <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mt-2 mb-2">
                   {item.title}
                 </h3>
                 <p className="text-body-sm text-stone">{item.description}</p>
@@ -254,7 +254,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section className="section-padding bg-off-black text-warm-white">
+      <section className="section-padding bg-off-black dark:bg-dark-elevated text-warm-white">
         <div className="container-site">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {testimonials.map((testimonial, index) => (

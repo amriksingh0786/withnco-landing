@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { ThemeProvider } from "@/lib/theme-context";
 
 // Use local Geist fonts as fallback - in production, you can swap these
 // for Google Fonts (Inter, Space Grotesk, JetBrains Mono) when deploying to Vercel
@@ -68,13 +69,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistHeading.variable} ${geistMono.variable} font-sans antialiased bg-warm-white text-off-black`}
+        className={`${geistSans.variable} ${geistHeading.variable} ${geistMono.variable} font-sans antialiased bg-warm-white dark:bg-dark-bg text-off-black dark:text-warm-white`}
       >
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <ThemeProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );

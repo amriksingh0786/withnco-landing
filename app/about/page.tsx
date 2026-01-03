@@ -43,7 +43,7 @@ export default function AboutPage() {
             className="grid grid-cols-1 lg:grid-cols-12 gap-12"
           >
             <div className="lg:col-span-4">
-              <h2 className="font-heading text-heading-2 text-off-black">
+              <h2 className="font-heading text-heading-2 text-off-black dark:text-warm-white">
                 Why we started this
               </h2>
             </div>
@@ -69,7 +69,7 @@ export default function AboutPage() {
                 understand startup constraints, and who care about your outcome
                 as much as you do.
               </p>
-              <p className="text-body text-off-black font-medium">
+              <p className="text-body text-off-black dark:text-warm-white font-medium">
                 We stay small intentionally. We choose clients carefully.
                 We&apos;d rather do fewer things well than scale for scale&apos;s
                 sake.
@@ -80,14 +80,14 @@ export default function AboutPage() {
       </section>
 
       {/* Team */}
-      <section className="section-padding bg-soft-cream">
+      <section className="section-padding bg-soft-cream dark:bg-dark-surface">
         <div className="container-site">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="font-heading text-heading-2 md:text-heading-1 text-off-black mb-12"
+            className="font-heading text-heading-2 md:text-heading-1 text-off-black dark:text-warm-white mb-12"
           >
             Meet the team
           </motion.h2>
@@ -98,12 +98,12 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="bg-warm-white rounded-lg p-8"
+              className="bg-warm-white dark:bg-dark-elevated rounded-lg p-8"
             >
               {/* Placeholder for photo */}
               <div className="w-24 h-24 bg-stone/20 rounded-full mb-6" />
 
-              <h3 className="font-heading text-heading-3 text-off-black">Ami</h3>
+              <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white">Ami</h3>
               <p className="text-terracotta text-body-sm mb-4">
                 Founder & Lead Engineer
               </p>
@@ -137,9 +137,9 @@ export default function AboutPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="bg-warm-white rounded-lg p-8 flex flex-col justify-center items-center text-center"
+              className="bg-warm-white dark:bg-dark-elevated rounded-lg p-8 flex flex-col justify-center items-center text-center"
             >
-              <h3 className="font-heading text-heading-3 text-off-black mb-4">
+              <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mb-4">
                 Open positions
               </h3>
               <p className="text-body-sm text-stone mb-6">
@@ -165,7 +165,7 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="font-heading text-heading-2 md:text-heading-1 text-off-black mb-12"
+            className="font-heading text-heading-2 md:text-heading-1 text-off-black dark:text-warm-white mb-12"
           >
             How we work
           </motion.h2>
@@ -179,7 +179,7 @@ export default function AboutPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <h3 className="font-heading text-heading-3 text-off-black mb-3">
+                <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mb-3">
                   {point.title}
                 </h3>
                 <p className="text-body-sm text-stone">{point.description}</p>

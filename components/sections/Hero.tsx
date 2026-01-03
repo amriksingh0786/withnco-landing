@@ -21,7 +21,7 @@ export function Hero({ title, subtitle, cta, centered = true }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className={`font-heading text-heading-1 md:text-display text-off-black mb-6 text-balance ${
+          className={`font-heading text-heading-1 md:text-display text-off-black dark:text-warm-white mb-6 text-balance ${
             centered ? "mx-auto max-w-4xl" : ""
           }`}
         >

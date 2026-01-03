@@ -17,15 +17,15 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     ref
   ) => {
     const baseStyles =
-      "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none";
+      "inline-flex items-center justify-center font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-terracotta focus-visible:ring-offset-2 dark:focus-visible:ring-offset-dark-bg disabled:opacity-50 disabled:pointer-events-none";
 
     const variants = {
       primary:
         "bg-terracotta text-warm-white hover:bg-terracotta/90 active:scale-[0.98]",
       secondary:
-        "border border-off-black text-off-black bg-transparent hover:bg-off-black hover:text-warm-white",
+        "border border-off-black dark:border-warm-white text-off-black dark:text-warm-white bg-transparent hover:bg-off-black dark:hover:bg-warm-white hover:text-warm-white dark:hover:text-off-black",
       ghost:
-        "text-off-black hover:text-terracotta underline-offset-4 hover:underline",
+        "text-off-black dark:text-warm-white hover:text-terracotta underline-offset-4 hover:underline",
     };
 
     const sizes = {
