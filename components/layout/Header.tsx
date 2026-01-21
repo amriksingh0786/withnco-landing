@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { Logo } from "@/components/ui/Logo";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -39,11 +40,8 @@ export function Header() {
       <nav className="container-site">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link
-            href="/"
-            className="font-heading text-xl font-bold text-off-black dark:text-warm-white hover:text-terracotta transition-colors"
-          >
-            with<span className="text-terracotta">&amp;</span>co
+          <Link href="/" className="relative">
+            <Logo className="h-10 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}

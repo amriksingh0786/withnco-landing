@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "@/components/ui/Logo";
 
 const footerLinks = [
   { href: "/approach", label: "Approach" },
@@ -17,11 +18,8 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link
-              href="/"
-              className="font-heading text-2xl font-bold inline-block mb-4"
-            >
-              with<span className="text-terracotta">&amp;</span>co
+            <Link href="/" className="inline-block mb-4">
+              <Logo className="h-12 w-auto [&_path:not([fill='#F35F09'])]:fill-warm-white" />
             </Link>
             <p className="text-stone max-w-sm mb-6">
               Built with care in India. Shipped globally.
