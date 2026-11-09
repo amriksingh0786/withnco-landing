@@ -1,19 +1,23 @@
 import { Metadata } from "next";
+import { SITE } from "@/lib/site";
+
+const description =
+  "Case studies from withnco: a production management platform for a US video production startup, and a real-time contact center system for an enterprise SaaS company. Work that shipped.";
+
+const shareDescription =
+  "Case studies: a production management platform for video shoots, and a WebRTC contact center system with a real-time agent dashboard.";
 
 export const metadata: Metadata = {
   title: "Our Work",
-  description:
-    "Portfolio of successful projects built by withnco - production management platforms, fintech ESOP systems, contact center solutions, and more. Real work that shipped for startups and enterprises.",
+  description,
   openGraph: {
-    title: "Our Work | withnco",
-    description:
-      "Case studies of successful projects - from fintech platforms to video production management. See what we've built for startups.",
-    url: "https://withnco.studio/work",
+    title: `Our Work | ${SITE.name}`,
+    description: shareDescription,
+    url: `${SITE.url}/work`,
   },
   twitter: {
-    title: "Our Work | withnco",
-    description:
-      "Case studies of successful projects - from fintech platforms to video production management. See what we've built for startups.",
+    title: `Our Work | ${SITE.name}`,
+    description: shareDescription,
   },
 };
 
