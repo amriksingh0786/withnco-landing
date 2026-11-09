@@ -1,19 +1,23 @@
 import { Metadata } from "next";
+import { SITE } from "@/lib/site";
+
+const description =
+  "Four fixed-scope studio offers with prices up front: AI workflow builds with a care plan, launch sprints, 3D product renders, and white-label work and archviz. Plus add-ons, and custom engineering for bigger builds.";
+
+const shareDescription =
+  "Fixed-scope studio offers with USD prices up front, add-ons, and custom engineering for bigger builds.";
 
 export const metadata: Metadata = {
   title: "Services",
-  description:
-    "Full-stack product development for startups. MVP development, web applications, mobile apps, API & backend systems, legacy modernization, and tech strategy consulting. Built with React, Next.js, Node.js, and modern technologies.",
+  description,
   openGraph: {
-    title: "Services | withnco",
-    description:
-      "From MVP to Series B - comprehensive engineering services for startups. Web, mobile, backend, and legacy modernization.",
-    url: "https://withnco.studio/services",
+    title: `Services | ${SITE.name}`,
+    description: shareDescription,
+    url: `${SITE.url}/services`,
   },
   twitter: {
-    title: "Services | withnco",
-    description:
-      "From MVP to Series B - comprehensive engineering services for startups. Web, mobile, backend, and legacy modernization.",
+    title: `Services | ${SITE.name}`,
+    description: shareDescription,
   },
 };
 
