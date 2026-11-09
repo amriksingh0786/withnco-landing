@@ -71,7 +71,7 @@ const SECTIONS: readonly PolicySection[] = [
   {
     heading: "Cookies",
     paragraphs: [
-      "This site sets no cookies. If you switch between the light and dark theme, that choice is stored only in your browser's local storage.",
+      "This site sets no cookies. Your light or dark theme preference is stored only in your browser's local storage.",
     ],
   },
   {

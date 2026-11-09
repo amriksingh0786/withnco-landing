@@ -15,7 +15,7 @@ export const HOME = {
   },
   trustBar: "For startups, product teams, D2C brands and agencies who'd rather ship than manage vendors",
   offers: {
-    heading: "Four things we do, at fixed prices",
+    heading: "Four things we do, with prices up front",
     intro: "Fixed scope, fixed price, and acceptance criteria written down before work starts.",
     biggerBuilds: {
       text: "Need something bigger? We also build MVPs, web and mobile apps, and APIs.",
@@ -32,7 +32,7 @@ export const HOME = {
       { agency: "A prompt wired into a zap", withnco: "Test sets scored before go-live, retries, alerts and a run log" },
       { agency: "Nobody checks the work", withnco: "A senior engineer reviews every engineering deliverable" },
       { agency: "One skill per vendor", withnco: "Design, 3D, web, AI and go-to-market under one brief and one invoice" },
-      { agency: "Disappears after launch", withnco: "Care plans keep what we built monitored and tested" },
+      { agency: "Disappears after launch", withnco: "Care plans keep automations monitored and re-tested every month" },
       { agency: "Treats you like a ticket", withnco: "Treats you like a partner" },
     ],
   },
@@ -56,7 +56,7 @@ export const HOME = {
         step: "03",
         title: "Build",
         description:
-          "A weekly written status from your project owner. A senior engineer reviews the work before you see it.",
+          "A weekly written status from your project owner. A senior engineer reviews every engineering deliverable before you see it; design and 3D are peer-reviewed.",
       },
       {
         step: "04",
@@ -141,7 +141,7 @@ We'd rather lose a project than build something we know will fail. Our reputatio
       duration: "A few days after discovery",
       items: [
         "A scope document: what we'll build, what we won't",
-        "Fixed price for studio offers; fixed or time-based for custom builds",
+        "Fixed price for studio offers; custom builds quoted after a scoping call",
         "Two revision rounds included, with any change requests priced up front",
         "Options if budget is tight: a smaller first phase, then the rest",
       ],
@@ -154,7 +154,7 @@ We'd rather lose a project than build something we know will fail. Our reputatio
         "One project owner on our side",
         "A written status every week, async by default",
         "Calls scheduled in advance when they help",
-        "A senior review before anything reaches you, with the review turnaround written into the scope",
+        "A senior engineer reviews engineering work before it reaches you, with the review turnaround written into the scope",
       ],
       outcome: "You're never in the dark. Progress is visible and written down.",
     },
@@ -306,7 +306,7 @@ export const CONTACT = {
       "No pitch decks. No formalities. Just tell us what you're working on and we'll see if we can help.",
   },
   budgetNote: "Prefer to pay in INR? Say so in your message and we'll quote in rupees.",
-  privacyNote: "We use your details only to reply to this inquiry.",
+  privacyNote: "We use your details to reply to this inquiry and scope the work.",
   success: {
     title: "Got it.",
     body: "We'll reply within 1 business day. Talk soon.",
@@ -327,7 +327,7 @@ export const CONTACT = {
     {
       question: "What's your pricing model?",
       answer:
-        "Our studio offers have fixed prices, listed in USD on each offer page. Custom builds are quoted after a short scoping call. Indian clients can ask for INR pricing.",
+        "Our studio offers have public 'from' prices in USD on each offer page. Custom builds are quoted after a short scoping call. Indian clients can ask for INR pricing.",
     },
     {
       question: "Do you work white-label?",

@@ -97,7 +97,6 @@ export function Footer() {
             <Link href="/privacy" className={`text-small ${linkClass}`}>
               Privacy
             </Link>
-            <p className="text-small text-stone">{SITE.location.line}</p>
           </div>
         </div>
       </div>

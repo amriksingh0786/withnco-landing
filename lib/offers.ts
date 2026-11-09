@@ -285,7 +285,7 @@ export const OFFERS: readonly Offer[] = [
       },
       {
         q: "Who owns the images?",
-        a: "You get full rights to the delivered images. The studio keeps the master file unless you buy it out for 30% extra.",
+        a: "You get full rights to the delivered images once the invoice is paid. The studio keeps the master file unless you buy it out for 30% extra.",
       },
     ],
     seo: {
@@ -353,7 +353,7 @@ export const OFFERS: readonly Offer[] = [
       { role: "Engineers", does: "Build AI add-ons and overflow work." },
       { role: "3D artists", does: "Model and render stills and walkthroughs." },
       { role: "Studio lead", does: "Reviews every engineering deliverable." },
-      { role: "Go-to-market", does: "Your single point of contact for scope and status." },
+      { role: "Go-to-market", does: "Keeps discovery notes and sends your weekly written status." },
     ],
     prices: [
       { item: "Inbox-triage AI add-on (to the agency)", price: "USD 2,500" },
@@ -420,7 +420,7 @@ export const ADD_ONS: readonly AddOn[] = [
   {
     id: "ai-ops-workshop",
     name: "AI for ops teams workshop",
-    description: "A half-day, in-person workshop in Bangalore on where AI workflows help operations teams, and how to run them reliably.",
+    description: "A half-day workshop for operations teams in Bangalore on where AI workflows help, and how to run them reliably.",
     price: PRICE_ON_REQUEST,
   },
 ];

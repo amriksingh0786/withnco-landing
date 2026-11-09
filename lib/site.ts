@@ -8,7 +8,7 @@ export const SITE = {
   url: "https://withnco.studio",
   tagline: "The small team behind your next launch",
   description:
-    "A small, senior-led studio for AI workflow automation, launch pages, 3D product renders and custom software. Fixed scope, fixed prices, and a senior engineer reviews every engineering deliverable.",
+    "A small, senior-led studio for AI workflow automation, launch pages, 3D product renders and custom software. Fixed-scope offers with prices up front, and a senior engineer reviews every engineering deliverable.",
   email: "hello@withnco.studio",
   whatsapp: {
     display: "+91 89650 37900",
