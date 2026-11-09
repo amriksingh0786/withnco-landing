@@ -1,7 +1,8 @@
 import { ImageResponse } from 'next/og';
+import { SITE } from '@/lib/site';
 
 // Image metadata
-export const alt = 'withnco — Engineering Partners for Startups';
+export const alt = `${SITE.name} — ${SITE.tagline}`;
 export const size = {
   width: 1200,
   height: 630,
@@ -53,7 +54,7 @@ export default async function Image() {
             maxWidth: '800px',
           }}
         >
-          Engineering Partners for Startups
+          {SITE.tagline}
         </div>
       </div>
     ),

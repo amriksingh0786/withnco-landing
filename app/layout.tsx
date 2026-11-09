@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeProvider } from "@/lib/theme-context";
 import { StructuredData } from "@/components/StructuredData";
+import { SITE } from "@/lib/site";
 
 // Use local Geist fonts as fallback - in production, you can swap these
 // for Google Fonts (Inter, Space Grotesk, JetBrains Mono) when deploying to Vercel
@@ -27,29 +29,42 @@ const geistHeading = localFont({
   weight: "100 900",
 });
 
+const defaultTitle = `${SITE.name} — ${SITE.tagline}`;
+
+// Share images come from app/opengraph-image.tsx and app/twitter-image.tsx.
 export const metadata: Metadata = {
-  metadataBase: new URL("https://withnco.studio"),
+  metadataBase: new URL(SITE.url),
   title: {
-    default: "withnco — Engineering Partners for Startups",
-    template: "%s | withnco",
+    default: defaultTitle,
+    template: `%s | ${SITE.name}`,
   },
-  description:
-    "Engineering partners who embed with your team, understand your context, and build like founders. Not vendors. Not contractors. Partners.",
+  description: SITE.description,
   keywords: [
-    "software development",
-    "startup engineering",
+    "AI workflow automation",
+    "AI automation studio",
+    "n8n",
+    "n8n automation",
+    "Make automation",
+    "landing page design",
+    "launch page",
+    "Framer",
+    "Framer website",
+    "3D product renders",
+    "product rendering",
+    "e-commerce product images",
+    "architectural visualization",
+    "archviz",
+    "white-label development",
+    "white-label agency partner",
+    "engineering overflow",
     "MVP development",
-    "web application",
-    "mobile app",
-    "tech partner",
-    "engineering partner",
-    "startup CTO",
-    "product development",
-    "fullstack development",
+    "web application development",
+    "mobile app development",
+    "custom software development",
   ],
-  authors: [{ name: "withnco", url: "https://withnco.studio" }],
-  creator: "withnco",
-  publisher: "withnco",
+  authors: [{ name: SITE.name, url: SITE.url }],
+  creator: SITE.name,
+  publisher: SITE.name,
   formatDetection: {
     email: false,
     address: false,
@@ -58,26 +73,15 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://withnco.studio",
-    siteName: "withnco",
-    title: "withnco — Engineering Partners for Startups",
-    description:
-      "Engineering partners who embed with your team, understand your context, and build like founders.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "withnco - Engineering Partners for Startups",
-      },
-    ],
+    url: SITE.url,
+    siteName: SITE.name,
+    title: defaultTitle,
+    description: SITE.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: "withnco — Engineering Partners for Startups",
-    description:
-      "Engineering partners who embed with your team, understand your context, and build like founders.",
-    images: ["/og-image.png"],
+    title: defaultTitle,
+    description: SITE.description,
   },
   robots: {
     index: true,
@@ -113,6 +117,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );

@@ -1,84 +1,104 @@
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
+import { SITE } from "@/lib/site";
+import { OFFERS } from "@/lib/offers";
 
-const footerLinks = [
-  { href: "/approach", label: "Approach" },
+const studioLinks = [
   { href: "/services", label: "Services" },
+  { href: "/white-label", label: "White-label" },
   { href: "/work", label: "Work" },
+  { href: "/approach", label: "Approach" },
   { href: "/about", label: "About" },
+  { href: "/definition-of-done", label: "Definition of done" },
   { href: "/contact", label: "Contact" },
 ];
+
+const offerLinks = OFFERS.map((o) => ({ href: o.href, label: o.name }));
+
+const connectLinks = [
+  { href: SITE.social.linkedin, label: "LinkedIn" },
+  { href: SITE.social.twitter, label: "Twitter / X" },
+  { href: SITE.whatsapp.href, label: "WhatsApp" },
+];
+
+const linkClass = "text-stone hover:text-warm-white transition-colors";
+const headingClass = "font-heading font-semibold mb-4 text-warm-white";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-off-black dark:bg-dark-surface text-warm-white">
+    <footer className="bg-off-black dark:bg-dark-surface text-warm-white dark:text-warm-white">
       <div className="container-site py-16 md:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-4">
+          <div className="sm:col-span-2">
+            <Link href="/" className="inline-block mb-4" aria-label="withnco home">
               <Logo className="h-12 w-auto [&_path:not([fill='#F35F09'])]:fill-warm-white" />
             </Link>
-            <p className="text-stone max-w-sm mb-6">
-              Built with care in India. Shipped globally.
-            </p>
+            <p className="text-stone max-w-sm mb-6">{SITE.location.line}</p>
             <a
-              href="mailto:hello@withnco.studio"
-              className="text-warm-white hover:text-terracotta transition-colors"
+              href={`mailto:${SITE.email}`}
+              className="text-warm-white hover:text-terracotta transition-colors break-words"
             >
-              hello@withnco.studio
+              {SITE.email}
             </a>
           </div>
 
-          {/* Navigation */}
+          {/* Studio */}
           <div>
-            <h4 className="font-heading font-semibold mb-4">Navigation</h4>
-            <nav className="flex flex-col gap-3">
-              {footerLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="text-stone hover:text-warm-white transition-colors"
-                >
+            <h2 className={headingClass}>Studio</h2>
+            <nav className="flex flex-col gap-3" aria-label="Studio">
+              {studioLinks.map((link) => (
+                <Link key={link.href} href={link.href} className={linkClass}>
                   {link.label}
                 </Link>
               ))}
             </nav>
           </div>
 
-          {/* Social */}
+          {/* Offers */}
           <div>
-            <h4 className="font-heading font-semibold mb-4">Connect</h4>
-            <nav className="flex flex-col gap-3">
-              <a
-                href="https://linkedin.com/company/withnco"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-stone hover:text-warm-white transition-colors"
-              >
-                LinkedIn
-              </a>
-              <a
-                href="https://twitter.com/withnco"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-stone hover:text-warm-white transition-colors"
-              >
-                Twitter / X
-              </a>
+            <h2 className={headingClass}>Offers</h2>
+            <nav className="flex flex-col gap-3" aria-label="Offers">
+              {offerLinks.map((link) => (
+                <Link key={link.href} href={link.href} className={linkClass}>
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Connect */}
+          <div>
+            <h2 className={headingClass}>Connect</h2>
+            <nav className="flex flex-col gap-3" aria-label="Connect">
+              {connectLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={linkClass}
+                >
+                  {link.label}
+                </a>
+              ))}
             </nav>
           </div>
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-stone/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-stone/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
           <p className="text-small text-stone">
-            &copy; {currentYear} withnco. A brand of Amrik (OPC) Innovates Pvt
-            Ltd.
+            &copy; {currentYear} {SITE.name}. A brand of {SITE.legalEntity}.
           </p>
-          <p className="text-small text-stone">Based in India. Building globally.</p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-6">
+            <Link href="/privacy" className={`text-small ${linkClass}`}>
+              Privacy
+            </Link>
+            <p className="text-small text-stone">{SITE.location.line}</p>
+          </div>
         </div>
       </div>
     </footer>
