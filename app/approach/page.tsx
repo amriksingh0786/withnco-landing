@@ -2,95 +2,15 @@
 
 import { Hero } from "@/components/sections/Hero";
 import { CTASection } from "@/components/sections/CTASection";
+import { APPROACH } from "@/lib/content";
 import { motion } from "framer-motion";
-
-const principles = [
-  {
-    title: "Context first",
-    content: `Every codebase has history. Every product decision had a reason — even the bad ones.
-
-Before we propose anything, we dig in. We read your existing code. We talk to your team. We understand the "why" behind what exists. This isn't just due diligence — it's respect for the work that came before us.`,
-  },
-  {
-    title: "Reuse over rebuild",
-    content: `We're not here to pad invoices or rewrite everything in our favorite framework.
-
-If something works, we keep it. If it can be fixed, we fix it. We only build new when it genuinely makes sense. Your budget is finite. We treat it like our own.`,
-  },
-  {
-    title: "Partnership, not handoff",
-    content: `We don't throw code over the wall and disappear.
-
-We embed with your team. We're in your Slack. We join your standups if it helps. We communicate constantly — not because we have to, but because that's how good software gets built.`,
-  },
-  {
-    title: "Speed without shortcuts",
-    content: `Yes, we move fast. But not because we cut corners.
-
-We're fast because we're experienced. We've seen these problems before. We make decisions quickly, avoid over-engineering, and ship working software every week. Speed and quality aren't tradeoffs — they're both the standard.`,
-  },
-  {
-    title: "Honest counsel",
-    content: `We'll tell you when an idea won't work. We'll push back on scope creep. We'll flag risks early.
-
-We'd rather lose a project than build something we know will fail. Our reputation depends on your success, not on saying yes to everything.`,
-  },
-];
-
-const phases = [
-  {
-    name: "Discovery",
-    duration: "Usually 1 week",
-    items: [
-      "Kickoff call to understand your business, users, and goals",
-      "Technical audit of existing systems (if applicable)",
-      "Review of past decisions, constraints, and failed attempts",
-      "Identification of quick wins and long-term priorities",
-    ],
-    outcome: "We know your world. You know if we're the right fit.",
-  },
-  {
-    name: "Proposal",
-    duration: "2-3 days after discovery",
-    items: [
-      "Clear scope document — what we'll build, what we won't",
-      "Realistic timeline with milestones",
-      "Transparent pricing — fixed or time-based, depending on scope",
-      "Options if budget is tight: MVP vs. full build, phased approach",
-    ],
-    outcome: "No ambiguity. You know exactly what you're getting.",
-  },
-  {
-    name: "Build",
-    duration: "Ongoing — weeks to months",
-    items: [
-      "Weekly syncs (or daily, if you prefer)",
-      "Async updates via Slack/Discord",
-      "Access to our team — ask questions anytime",
-      "Iterative delivery — working software every sprint, not a big reveal at the end",
-    ],
-    outcome: "You're never in the dark. Progress is visible and constant.",
-  },
-  {
-    name: "Launch & Beyond",
-    duration: "Ongoing",
-    items: [
-      "We don't disappear after deploy",
-      "Production monitoring, bug fixes, performance tuning",
-      "Roadmap planning for v2, v3, and beyond",
-      "Scale the engagement up or down as your needs change",
-    ],
-    outcome: "A lasting partnership, not a transactional handoff.",
-  },
-];
+import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function ApproachPage() {
   return (
     <>
-      <Hero
-        title="We understand before we build"
-        subtitle="Most agencies rush to solutions. We start with questions. What exists? What's working? What did the last team get wrong? Only then do we write code."
-      />
+      <Hero title={APPROACH.hero.title} subtitle={APPROACH.hero.subtitle} />
 
       {/* Principles */}
       <section className="section-padding">
@@ -102,11 +22,11 @@ export default function ApproachPage() {
             transition={{ duration: 0.5 }}
             className="font-heading text-heading-2 md:text-heading-1 text-off-black dark:text-warm-white mb-16"
           >
-            How we think
+            {APPROACH.principlesHeading}
           </motion.h2>
 
           <div className="space-y-16 md:space-y-24">
-            {principles.map((principle, index) => (
+            {APPROACH.principles.map((principle, index) => (
               <motion.article
                 key={principle.title}
                 initial={{ opacity: 0, y: 20 }}
@@ -117,7 +37,7 @@ export default function ApproachPage() {
               >
                 <div className="md:col-span-4">
                   <span className="font-mono text-small text-terracotta">
-                    0{index + 1}
+                    {String(index + 1).padStart(2, "0")}
                   </span>
                   <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mt-2">
                     {principle.title}
@@ -133,6 +53,24 @@ export default function ApproachPage() {
               </motion.article>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-12 gap-8"
+          >
+            <div className="md:col-start-5 md:col-span-8">
+              <Link
+                href="/definition-of-done"
+                className="text-terracotta hover:underline underline-offset-4 inline-flex items-center gap-1"
+              >
+                See our definition of done
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
+            </div>
+          </motion.div>
         </div>
       </section>
 
@@ -146,11 +84,11 @@ export default function ApproachPage() {
             transition={{ duration: 0.5 }}
             className="font-heading text-heading-2 md:text-heading-1 text-off-black dark:text-warm-white mb-16"
           >
-            What working with us looks like
+            {APPROACH.phasesHeading}
           </motion.h2>
 
           <div className="space-y-12">
-            {phases.map((phase, index) => (
+            {APPROACH.phases.map((phase, index) => (
               <motion.div
                 key={phase.name}
                 initial={{ opacity: 0, y: 20 }}
@@ -174,12 +112,15 @@ export default function ApproachPage() {
                 </div>
 
                 <ul className="space-y-3 mb-6">
-                  {phase.items.map((item, i) => (
+                  {phase.items.map((item) => (
                     <li
-                      key={i}
+                      key={item}
                       className="text-body-sm text-stone flex items-start gap-3"
                     >
-                      <span className="w-1.5 h-1.5 rounded-full bg-terracotta mt-2 flex-shrink-0" />
+                      <span
+                        className="w-1.5 h-1.5 rounded-full bg-terracotta mt-2 flex-shrink-0"
+                        aria-hidden="true"
+                      />
                       {item}
                     </li>
                   ))}
@@ -196,9 +137,9 @@ export default function ApproachPage() {
       </section>
 
       <CTASection
-        title="Curious how we'd approach your project?"
-        subtitle="Let's talk through it. No commitment, no pitch deck required."
-        cta={{ label: "Let's Talk", href: "/contact" }}
+        title={APPROACH.cta.title}
+        subtitle={APPROACH.cta.subtitle}
+        cta={APPROACH.cta.cta}
       />
     </>
   );

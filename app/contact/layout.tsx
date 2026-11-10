@@ -1,19 +1,27 @@
 import { Metadata } from "next";
+import { OG_BASE, TWITTER_IMAGES } from "@/lib/metadata";
+import { SITE } from "@/lib/site";
+
+const description = `Talk to withnco about an AI workflow build, a launch sprint, 3D product renders, white-label work or a custom build. We reply within 1 business day. Based in ${SITE.location.short}.`;
+
+const shareDescription =
+  "Tell us what you're working on: AI workflows, launch pages, 3D product renders, white-label work or a custom build. We reply within 1 business day.";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description:
-    "Get in touch with withnco. Let's discuss your startup project - no pitch decks required. We respond within 24 hours. Start a conversation about MVP development, web apps, or tech strategy.",
+  description,
+  alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Contact | withnco",
-    description:
-      "Ready to build something great? Get in touch with our engineering team. Fast response, honest conversation, no hard sell.",
-    url: "https://withnco.studio/contact",
+    ...OG_BASE,
+    title: `Contact | ${SITE.name}`,
+    description: shareDescription,
+    url: `${SITE.url}/contact`,
   },
   twitter: {
-    title: "Contact | withnco",
-    description:
-      "Ready to build something great? Get in touch with our engineering team. Fast response, honest conversation, no hard sell.",
+    card: "summary_large_image",
+    images: TWITTER_IMAGES,
+    title: `Contact | ${SITE.name}`,
+    description: shareDescription,
   },
 };
 

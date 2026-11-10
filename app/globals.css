@@ -20,6 +20,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Keep focused and anchored elements clear of the fixed 80px header. */
+  scroll-padding-top: 6rem;
 }
 
 body {
