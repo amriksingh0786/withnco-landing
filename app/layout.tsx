@@ -4,7 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { ThemeProvider } from "@/lib/theme-context";
+import { ThemeProvider, THEME_INIT_SCRIPT } from "@/lib/theme-context";
 import { StructuredData } from "@/components/StructuredData";
 import { SITE } from "@/lib/site";
 
@@ -108,6 +108,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body
         className={`${geistSans.variable} ${geistHeading.variable} ${geistMono.variable} font-sans antialiased bg-warm-white dark:bg-dark-bg text-off-black dark:text-warm-white`}
       >

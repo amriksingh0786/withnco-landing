@@ -21,7 +21,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
     const variants = {
       primary:
-        "bg-terracotta text-warm-white hover:bg-terracotta/90 active:scale-[0.98]",
+        "bg-terracotta text-off-black dark:text-warm-white hover:bg-terracotta/90 active:scale-[0.98]",
       secondary:
         "border border-off-black dark:border-warm-white text-off-black dark:text-warm-white bg-transparent hover:bg-off-black dark:hover:bg-warm-white hover:text-warm-white dark:hover:text-off-black",
       ghost:

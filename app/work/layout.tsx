@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/metadata";
 import { SITE } from "@/lib/site";
 
 const description =
@@ -11,11 +12,14 @@ export const metadata: Metadata = {
   title: "Our Work",
   description,
   openGraph: {
+    images: OG_IMAGES,
     title: `Our Work | ${SITE.name}`,
     description: shareDescription,
     url: `${SITE.url}/work`,
   },
   twitter: {
+    card: "summary_large_image",
+    images: TWITTER_IMAGES,
     title: `Our Work | ${SITE.name}`,
     description: shareDescription,
   },
