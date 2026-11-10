@@ -116,13 +116,19 @@ export default function Home() {
           </motion.div>
 
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[600px]">
+            <table className="w-full">
               <thead>
                 <tr className="border-b border-stone/20">
-                  <th className="text-left py-4 pr-4 font-heading text-heading-3 text-stone">
+                  <th
+                    scope="col"
+                    className="text-left align-bottom py-4 pr-4 font-heading text-heading-3 text-stone"
+                  >
                     The usual agency
                   </th>
-                  <th className="text-left py-4 pl-4 font-heading text-heading-3 text-off-black dark:text-warm-white">
+                  <th
+                    scope="col"
+                    className="text-left align-bottom py-4 pl-4 font-heading text-heading-3 text-off-black dark:text-warm-white"
+                  >
                     withnco
                   </th>
                 </tr>
@@ -137,7 +143,7 @@ export default function Home() {
                     transition={{ duration: 0.4, delay: index * 0.05 }}
                     className="border-b border-stone/10 dark:border-stone/20"
                   >
-                    <td className="py-4 pr-4 text-body-sm text-stone">
+                    <td className="py-4 pr-4 align-top text-body-sm text-stone">
                       <div className="flex items-start gap-2">
                         <X
                           className="w-5 h-5 text-stone/50 mt-0.5 flex-shrink-0"
@@ -146,7 +152,7 @@ export default function Home() {
                         {row.agency}
                       </div>
                     </td>
-                    <td className="py-4 pl-4 text-body-sm text-off-black dark:text-warm-white font-medium">
+                    <td className="py-4 pl-4 align-top text-body-sm text-off-black dark:text-warm-white font-medium">
                       <div className="flex items-start gap-2">
                         <Check
                           className="w-5 h-5 text-terracotta mt-0.5 flex-shrink-0"

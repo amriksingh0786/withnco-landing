@@ -156,22 +156,32 @@ export function OfferPage({ slug }: OfferPageProps) {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="bg-warm-white dark:bg-dark-elevated rounded-lg border border-stone/10 dark:border-stone/20 px-6 md:px-8"
           >
-            <table className="w-full text-left block sm:table">
-              <thead className="hidden sm:table-header-group">
-                <tr className="border-b border-stone/10 dark:border-stone/20">
+            {/* Below sm the table stacks (display: block), which drops its implicit
+                table semantics in some browsers, so the roles are explicit. The
+                column headers are hidden there too, so each cell carries a
+                screen-reader label that is removed again from sm up. */}
+            <table role="table" className="w-full text-left block sm:table">
+              <thead role="rowgroup" className="hidden sm:table-header-group">
+                <tr
+                  role="row"
+                  className="border-b border-stone/10 dark:border-stone/20"
+                >
                   <th
+                    role="columnheader"
                     scope="col"
                     className="py-4 pr-4 text-small font-medium text-stone"
                   >
                     Item
                   </th>
                   <th
+                    role="columnheader"
                     scope="col"
                     className="py-4 px-4 text-small font-medium text-stone"
                   >
                     Price
                   </th>
                   <th
+                    role="columnheader"
                     scope="col"
                     className="py-4 pl-4 text-small font-medium text-stone"
                   >
@@ -179,26 +189,36 @@ export function OfferPage({ slug }: OfferPageProps) {
                   </th>
                 </tr>
               </thead>
-              <tbody className="block sm:table-row-group">
+              <tbody role="rowgroup" className="block sm:table-row-group">
                 {offer.prices.map((line) => (
                   <tr
                     key={line.item}
+                    role="row"
                     className="block sm:table-row py-4 sm:py-0 border-b last:border-b-0 border-stone/10 dark:border-stone/20"
                   >
                     <th
+                      role="rowheader"
                       scope="row"
                       className="block sm:table-cell sm:py-5 sm:pr-4 text-body-sm font-medium text-off-black dark:text-warm-white align-top"
                     >
                       {line.item}
                     </th>
-                    <td className="block sm:table-cell mt-1 sm:mt-0 sm:py-5 sm:px-4 font-heading text-body text-terracotta sm:whitespace-nowrap align-top">
+                    <td
+                      role="cell"
+                      className="block sm:table-cell mt-1 sm:mt-0 sm:py-5 sm:px-4 font-heading text-body text-terracotta sm:whitespace-nowrap align-top"
+                    >
+                      <span className="sr-only sm:hidden">Price: </span>
                       {line.price}
                     </td>
                     <td
+                      role="cell"
                       className={`${
                         line.note ? "block" : "hidden"
                       } sm:table-cell mt-1 sm:mt-0 sm:py-5 sm:pl-4 text-small text-stone align-top`}
                     >
+                      {line.note && (
+                        <span className="sr-only sm:hidden">Notes: </span>
+                      )}
                       {line.note}
                     </td>
                   </tr>
@@ -326,8 +346,8 @@ export function OfferPage({ slug }: OfferPageProps) {
       </section>
 
       <CTASection
-        title="Tell us what you need"
-        subtitle={`${CONTACT.nextSteps[0]}. ${CONTACT.nextSteps[2]}.`}
+        title={CONTACT.offerCta.title}
+        subtitle={CONTACT.offerCta.subtitle}
         cta={{ label: "Get a quote", href: quoteHref }}
       />
     </>

@@ -113,7 +113,10 @@ export default function WorkPage() {
                               key={point}
                               className="text-body-sm text-stone flex items-start gap-2"
                             >
-                              <span className="w-1.5 h-1.5 rounded-full bg-terracotta mt-2 flex-shrink-0" />
+                              <span
+                                className="w-1.5 h-1.5 rounded-full bg-terracotta mt-2 flex-shrink-0"
+                                aria-hidden="true"
+                              />
                               {point}
                             </li>
                           ))}

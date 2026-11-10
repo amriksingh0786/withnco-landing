@@ -14,7 +14,7 @@ import {
 } from "@/lib/offers";
 import { SITE, hasBookingUrl } from "@/lib/site";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Check } from "lucide-react";
 import Link from "next/link";
 
@@ -37,6 +37,7 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const successHeadingRef = useRef<HTMLHeadingElement>(null);
   const showBooking = hasBookingUrl();
 
   // Preselect the service from /contact?offer=<slug>. Read on the client so the
@@ -47,6 +48,13 @@ export default function ContactPage() {
       setService(offer);
     }
   }, []);
+
+  // The form is replaced by the success message, so move focus to its heading.
+  useEffect(() => {
+    if (isSuccess) {
+      successHeadingRef.current?.focus();
+    }
+  }, [isSuccess]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -63,6 +71,7 @@ export default function ContactPage() {
       budget: field(formData, "budget"),
       scope: field(formData, "scope"),
       source: field(formData, "source"),
+      website: field(formData, "website"),
     };
 
     try {
@@ -98,7 +107,11 @@ export default function ContactPage() {
             <div className="w-16 h-16 bg-terracotta/10 rounded-full flex items-center justify-center mx-auto mb-6">
               <Check className="w-8 h-8 text-terracotta" aria-hidden="true" />
             </div>
-            <h1 className="font-heading text-heading-1 text-off-black dark:text-warm-white mb-4">
+            <h1
+              ref={successHeadingRef}
+              tabIndex={-1}
+              className="font-heading text-heading-1 text-off-black dark:text-warm-white mb-4 outline-none"
+            >
               {CONTACT.success.title}
             </h1>
             <p className="text-body text-stone max-w-md mx-auto">
@@ -210,6 +223,21 @@ export default function ContactPage() {
                   placeholder="Google, referral, Twitter..."
                 />
 
+                {/* Honeypot: off-screen and out of the tab order; people never fill it. */}
+                <div
+                  className="absolute -left-[9999px] w-px h-px overflow-hidden"
+                  aria-hidden="true"
+                >
+                  <label htmlFor="website">Website</label>
+                  <input
+                    type="text"
+                    id="website"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 {error && (
                   <p className="text-red-500 text-small" role="alert">
                     {error}
@@ -243,7 +271,7 @@ export default function ContactPage() {
               >
                 {/* Email */}
                 <div className={sidebarCard}>
-                  <h3 className={sidebarHeading}>Prefer email?</h3>
+                  <h2 className={sidebarHeading}>Prefer email?</h2>
                   <p className="text-body-sm text-stone mb-2">
                     Reach out directly:
                   </p>
@@ -257,9 +285,9 @@ export default function ContactPage() {
 
                 {/* WhatsApp (India) */}
                 <div className={sidebarCard}>
-                  <h3 className={sidebarHeading}>
+                  <h2 className={sidebarHeading}>
                     In India? Message us on WhatsApp
-                  </h3>
+                  </h2>
                   <a
                     href={SITE.whatsapp.href}
                     target="_blank"
@@ -275,7 +303,7 @@ export default function ContactPage() {
                 {/* Booking link, shown only once a scheduling URL is configured */}
                 {showBooking && (
                   <div className={sidebarCard}>
-                    <h3 className={sidebarHeading}>Book a call</h3>
+                    <h2 className={sidebarHeading}>Book a call</h2>
                     <a
                       href={SITE.bookingUrl}
                       target="_blank"
@@ -291,7 +319,7 @@ export default function ContactPage() {
 
                 {/* What happens next */}
                 <div className={sidebarCard}>
-                  <h3 className={sidebarHeading}>What happens next</h3>
+                  <h2 className={sidebarHeading}>What happens next</h2>
                   <ol className="space-y-3">
                     {CONTACT.nextSteps.map((step, index) => (
                       <li key={step} className="text-body-sm text-stone flex gap-3">
@@ -306,15 +334,15 @@ export default function ContactPage() {
 
                 {/* FAQ */}
                 <div>
-                  <h3 className="font-heading text-heading-3 text-off-black dark:text-warm-white mb-6">
+                  <h2 className="font-heading text-heading-3 text-off-black dark:text-warm-white mb-6">
                     FAQ
-                  </h3>
+                  </h2>
                   <div className="space-y-6">
                     {CONTACT.faqs.map((faq) => (
                       <div key={faq.question}>
-                        <h4 className="text-body-sm font-medium text-off-black dark:text-warm-white mb-1">
+                        <h3 className="text-body-sm font-medium text-off-black dark:text-warm-white mb-1">
                           {faq.question}
-                        </h4>
+                        </h3>
                         <p className="text-small text-stone">{faq.answer}</p>
                       </div>
                     ))}

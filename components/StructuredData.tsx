@@ -6,6 +6,9 @@ import { ADD_ONS, OFFERS } from "@/lib/offers";
  * lib/offers.ts so the structured data never drifts from the pages.
  */
 
+// public/logo.png is a 1132x348 wordmark (about 3.25:1), not the square logo
+// Google asks for, so the generated Open Graph image stays the logo for now.
+// Switch to a square file in public/ once one exists.
 const LOGO_URL = `${SITE.url}/opengraph-image`;
 
 const address = {
@@ -25,9 +28,12 @@ function parseFromUsd(price: string): number | null {
   return match ? Number(match[1].replace(/,/g, "")) : null;
 }
 
+const service = (name: string) => ({ "@type": "Service", name });
+
 const offerItems = OFFERS.map((o) => ({
   "@type": "Offer",
   name: o.name,
+  itemOffered: service(o.name),
   description: o.summary,
   url: `${SITE.url}${o.href}`,
   priceSpecification: usdFrom(o.fromUsd),
@@ -42,6 +48,7 @@ const addOnItems = ADD_ONS.flatMap((a) => {
     {
       "@type": "Offer",
       name: a.name,
+      itemOffered: service(a.name),
       description: a.description,
       url: `${SITE.url}/services`,
       priceSpecification: usdFrom(minPrice),

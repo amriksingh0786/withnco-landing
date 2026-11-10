@@ -16,13 +16,20 @@ const MAX_LENGTH = {
   budget: 100,
   scope: 50,
   source: 300,
+  /** Honeypot: hidden from people, so any value means an automated submission. */
+  website: 200,
 } as const;
 
 type Field = keyof typeof MAX_LENGTH;
 
 const REQUIRED: readonly Field[] = ["name", "email", "service", "message", "scope"];
 
-const EMAIL_PATTERN = /^[^\s@<>()[\]\\,;:"]+@[^\s@<>()[\]\\,;:"]+\.[^\s@<>()[\]\\,;:"]+$/;
+/**
+ * Deliberately strict: besides whitespace and address punctuation, it rejects
+ * ? & = % # / so an address can never carry mailto or URL parameters.
+ */
+const EMAIL_PATTERN =
+  /^[^\s@<>()[\]\\,;:"?&=%#/]+@[^\s@<>()[\]\\,;:"?&=%#/]+\.[^\s@<>()[\]\\,;:"?&=%#/]+$/;
 
 const SCOPE_FLAGGED = new Set<string>(["yes", "unsure"]);
 
@@ -39,6 +46,15 @@ function escapeHtml(value: string): string {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+/**
+ * Percent-encode an address for a mailto: href. Each side of the "@" goes through
+ * encodeURIComponent, so nothing in the address can add mailto parameters
+ * (?cc=, &bcc=...), while the "@" separator stays literal as RFC 6068 expects.
+ */
+function mailtoHref(address: string): string {
+  return `mailto:${address.split("@").map(encodeURIComponent).join("@")}`;
 }
 
 /** Collapse CR/LF (and other line breaks) so a value is safe in a mail header. */
@@ -83,8 +99,13 @@ export async function POST(request: Request) {
     values[key] = trimmed;
   }
 
-  const { name, email, company, service, message, budget, scope, source } =
+  const { name, email, company, service, message, budget, scope, source, website } =
     values;
+
+  // Honeypot filled in: answer as if it worked so the bot learns nothing, send nothing.
+  if (website !== "") {
+    return NextResponse.json({ success: true });
+  }
 
   if (REQUIRED.some((key) => values[key] === "")) {
     return badRequest("Missing required fields");
@@ -141,7 +162,7 @@ export async function POST(request: Request) {
             ${row("Name", escapeHtml(name))}
             ${row(
               "Email",
-              `<a href="mailto:${escapeHtml(email)}" style="color: #C67B5C;">${escapeHtml(email)}</a>`
+              `<a href="${escapeHtml(mailtoHref(email))}" style="color: #C67B5C;">${escapeHtml(email)}</a>`
             )}
             ${row("Company", escapeHtml(company || notProvided))}
             ${row("Service", escapeHtml(serviceLabel))}

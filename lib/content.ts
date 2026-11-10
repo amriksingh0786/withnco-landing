@@ -317,6 +317,12 @@ export const CONTACT = {
     "If there's a fit, we book a 30-minute call at a time that works for both sides",
     "You get a written scope and a fixed price before any work starts",
   ],
+  /** Closing call to action on every offer page. */
+  offerCta: {
+    title: "Tell us what you need",
+    subtitle:
+      "We reply within 1 business day. You get a written scope and a fixed price before any work starts.",
+  },
   faqs: [
     { question: "How quickly can you start?", answer: "Usually within 1-2 weeks, depending on current projects." },
     {

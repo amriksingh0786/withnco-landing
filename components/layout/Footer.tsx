@@ -81,7 +81,8 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className={linkClass}
                 >
-                  {link.label}
+                  {link.label}{" "}
+                  <span className="sr-only">(opens in a new tab)</span>
                 </a>
               ))}
             </nav>

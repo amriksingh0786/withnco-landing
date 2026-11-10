@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Logo } from "@/components/ui/Logo";
@@ -34,6 +34,7 @@ export function Header() {
   const pathname = usePathname() ?? "/";
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,6 +49,36 @@ export function Header() {
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
+
+  // While the mobile menu is open: Escape closes it and returns focus to the toggle,
+  // the page behind it does not scroll, and growing past the lg breakpoint (where
+  // the panel is hidden) closes it so the scroll lock never outlives the panel.
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMobileMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+
+    const desktop = window.matchMedia("(min-width: 1024px)");
+    const handleBreakpoint = () => {
+      if (desktop.matches) setIsMobileMenuOpen(false);
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+    desktop.addEventListener("change", handleBreakpoint);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+      desktop.removeEventListener("change", handleBreakpoint);
+    };
+  }, [isMobileMenuOpen]);
 
   return (
     <header
@@ -92,6 +123,7 @@ export function Header() {
           <div className="lg:hidden flex items-center gap-2">
             <ThemeToggle />
             <button
+              ref={menuButtonRef}
               type="button"
               className="p-2 text-off-black dark:text-warm-white"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -109,38 +141,38 @@ export function Header() {
         </div>
       </nav>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div
-          id="mobile-menu"
-          className="lg:hidden fixed left-0 right-0 top-20 h-[calc(100dvh-5rem)] bg-warm-white dark:bg-dark-bg z-40 overflow-y-auto"
-        >
-          <nav className="container-site py-8 flex flex-col gap-6" aria-label="Mobile">
-            {navLinks.map((link) => {
-              const current = activeState(pathname, link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  aria-current={current}
-                  className={`text-heading-3 font-heading text-off-black dark:text-warm-white transition-colors hover:text-terracotta ${
-                    current ? ACTIVE_LINK : ""
-                  }`}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-            {/* Button renders a Link for href, so close the menu from a wrapper. */}
-            <div className="mt-4" onClick={() => setIsMobileMenuOpen(false)}>
-              <Button href="/contact" className="w-full">
-                Let&apos;s Talk
-              </Button>
-            </div>
-          </nav>
-        </div>
-      )}
+      {/* Mobile Menu: always mounted so aria-controls="mobile-menu" resolves; the
+          hidden attribute removes it from view and from the accessibility tree. */}
+      <div
+        id="mobile-menu"
+        hidden={!isMobileMenuOpen}
+        className="lg:hidden fixed left-0 right-0 top-20 h-[calc(100dvh-5rem)] bg-warm-white dark:bg-dark-bg z-40 overflow-y-auto"
+      >
+        <nav className="container-site py-8 flex flex-col gap-6" aria-label="Mobile">
+          {navLinks.map((link) => {
+            const current = activeState(pathname, link.href);
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={current}
+                className={`text-heading-3 font-heading text-off-black dark:text-warm-white transition-colors hover:text-terracotta ${
+                  current ? ACTIVE_LINK : ""
+                }`}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+              </Link>
+            );
+          })}
+          {/* Button renders a Link for href, so close the menu from a wrapper. */}
+          <div className="mt-4" onClick={() => setIsMobileMenuOpen(false)}>
+            <Button href="/contact" className="w-full">
+              Let&apos;s Talk
+            </Button>
+          </div>
+        </nav>
+      </div>
     </header>
   );
 }
