@@ -70,6 +70,7 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -83,12 +84,9 @@ export const metadata: Metadata = {
     title: defaultTitle,
     description: SITE.description,
   },
+  // index/follow is the default; leaving it out lets the 404 page carry only Next's noindex.
   robots: {
-    index: true,
-    follow: true,
     googleBot: {
-      index: true,
-      follow: true,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
@@ -110,6 +108,12 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+        {/* Without JavaScript, entrance animations never run: show their content as it is. */}
+        <noscript
+          dangerouslySetInnerHTML={{
+            __html: '<style>[style*="opacity:0"]{opacity:1!important;transform:none!important}</style>',
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistHeading.variable} ${geistMono.variable} font-sans antialiased bg-warm-white dark:bg-dark-bg text-off-black dark:text-warm-white`}

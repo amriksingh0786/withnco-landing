@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/metadata";
+import { OG_BASE, TWITTER_IMAGES } from "@/lib/metadata";
 import { LEAD, SITE } from "@/lib/site";
 
 const description = `${SITE.name} is a small, senior-led studio based in ${SITE.location.short} for AI workflows, launch pages, 3D product visuals and custom software, led by ${LEAD.name}.`;
@@ -9,8 +9,9 @@ const shareDescription = `A small, senior-led studio led by ${LEAD.name}, with d
 export const metadata: Metadata = {
   title: "About Us",
   description,
+  alternates: { canonical: "/about" },
   openGraph: {
-    images: OG_IMAGES,
+    ...OG_BASE,
     title: `About Us | ${SITE.name}`,
     description: shareDescription,
     url: `${SITE.url}/about`,

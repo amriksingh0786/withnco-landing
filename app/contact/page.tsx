@@ -38,6 +38,7 @@ export default function ContactPage() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const successHeadingRef = useRef<HTMLHeadingElement>(null);
+  const errorRef = useRef<HTMLParagraphElement>(null);
   const showBooking = hasBookingUrl();
 
   // Preselect the service from /contact?offer=<slug>. Read on the client so the
@@ -55,6 +56,13 @@ export default function ContactPage() {
       successHeadingRef.current?.focus();
     }
   }, [isSuccess]);
+
+  // The submit button is disabled while sending, which drops focus; put it on the error instead.
+  useEffect(() => {
+    if (error) {
+      errorRef.current?.focus();
+    }
+  }, [error]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -239,7 +247,7 @@ export default function ContactPage() {
                 </div>
 
                 {error && (
-                  <p className="text-red-500 text-small" role="alert">
+                  <p ref={errorRef} tabIndex={-1} className="text-red-700 dark:text-red-400 text-small outline-none" role="alert">
                     {error}
                   </p>
                 )}

@@ -144,7 +144,7 @@ export function OfferPage({ slug }: OfferPageProps) {
       {/* Pricing */}
       <section
         id="pricing"
-        className="section-padding bg-soft-cream dark:bg-dark-surface scroll-mt-20"
+        className="section-padding bg-soft-cream dark:bg-dark-surface"
       >
         <div className="container-site">
           <motion.h2 {...fadeUp} className={`${sectionHeading} mb-12`}>

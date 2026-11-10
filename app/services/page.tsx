@@ -132,7 +132,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Custom builds */}
-      <section id="custom-builds" className="section-padding scroll-mt-20">
+      <section id="custom-builds" className="section-padding">
         <div className="container-site">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

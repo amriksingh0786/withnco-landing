@@ -1,15 +1,16 @@
 import { Metadata } from "next";
-import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/metadata";
+import { OG_BASE, TWITTER_IMAGES } from "@/lib/metadata";
 import { offerBySlug } from "@/lib/offers";
 import { SITE } from "@/lib/site";
 
 const offer = offerBySlug("ai-workflows");
 
 export const metadata: Metadata = {
-  title: offer.seo.title,
+  title: { absolute: `${offer.seo.title} | ${SITE.name}` },
   description: offer.seo.description,
+  alternates: { canonical: `${offer.href}` },
   openGraph: {
-    images: OG_IMAGES,
+    ...OG_BASE,
     title: `${offer.seo.title} | ${SITE.name}`,
     description: offer.seo.description,
     url: `${SITE.url}${offer.href}`,

@@ -70,10 +70,14 @@ export function Header() {
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    // Keep Tab inside the open menu: the page behind the overlay becomes inert.
+    const behind = Array.from(document.querySelectorAll<HTMLElement>("body > main, body > footer"));
+    behind.forEach((el) => el.setAttribute("inert", ""));
     document.addEventListener("keydown", handleKeyDown);
     desktop.addEventListener("change", handleBreakpoint);
 
     return () => {
+      behind.forEach((el) => el.removeAttribute("inert"));
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", handleKeyDown);
       desktop.removeEventListener("change", handleBreakpoint);

@@ -104,7 +104,7 @@ export function RadioGroup({
       </div>
 
       {error && (
-        <p id={errorId} className="mt-1 text-small text-red-500">
+        <p id={errorId} className="mt-1 text-small text-red-700 dark:text-red-400">
           {error}
         </p>
       )}

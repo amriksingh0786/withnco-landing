@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/metadata";
+import { OG_BASE, TWITTER_IMAGES } from "@/lib/metadata";
 import { SITE } from "@/lib/site";
 
 const description = `Talk to withnco about an AI workflow build, a launch sprint, 3D product renders, white-label work or a custom build. We reply within 1 business day. Based in ${SITE.location.short}.`;
@@ -10,8 +10,9 @@ const shareDescription =
 export const metadata: Metadata = {
   title: "Contact",
   description,
+  alternates: { canonical: "/contact" },
   openGraph: {
-    images: OG_IMAGES,
+    ...OG_BASE,
     title: `Contact | ${SITE.name}`,
     description: shareDescription,
     url: `${SITE.url}/contact`,

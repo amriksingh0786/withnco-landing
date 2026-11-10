@@ -142,7 +142,7 @@ We'd rather lose a project than build something we know will fail. Our reputatio
       items: [
         "A scope document: what we'll build, what we won't",
         "Fixed price for studio offers; custom builds quoted after a scoping call",
-        "Two revision rounds included, with any change requests priced up front",
+        "Revision rounds included as listed for each offer, with any change requests priced up front",
         "Options if budget is tight: a smaller first phase, then the rest",
       ],
       outcome: "No ambiguity. You know exactly what you're getting.",
@@ -358,14 +358,14 @@ export const DEFINITION_OF_DONE = {
     heading: "On every project",
     items: [
       "Scope, price and acceptance criteria agreed in writing before work starts",
-      "Two revision rounds included; change requests priced before they're done",
+      "Revision rounds included as listed for each offer (usually two); change requests priced before they're done",
       "A weekly written status from your project owner",
       "Nothing reaches you without passing its checklist below",
     ],
   },
   disciplines: [
     {
-      name: "AI workflows and engineering",
+      name: "AI workflows",
       reviewer: "Reviewed by our studio lead before any demo",
       items: [
         "A test set built from your real data (50 cases, or 100 on Plus) scored before go-live",
@@ -375,6 +375,15 @@ export const DEFINITION_OF_DONE = {
         "Built on your own accounts; credentials only in your platform's credential store",
         "A handover document and a 30-minute recorded walkthrough",
         "14 days of fixes after go-live",
+      ],
+    },
+    {
+      name: "Custom engineering",
+      reviewer: "Reviewed by our studio lead before it reaches you",
+      items: [
+        "Acceptance criteria from the written scope checked before handover",
+        "Every delivery reviewed by our studio lead",
+        "Handover documentation for your team",
       ],
     },
     {

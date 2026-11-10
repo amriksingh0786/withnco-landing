@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { OG_IMAGES, TWITTER_IMAGES } from "@/lib/metadata";
+import { OG_BASE, TWITTER_IMAGES } from "@/lib/metadata";
 import { SITE } from "@/lib/site";
 
 const description =
@@ -11,8 +11,9 @@ const shareDescription =
 export const metadata: Metadata = {
   title: "Services",
   description,
+  alternates: { canonical: "/services" },
   openGraph: {
-    images: OG_IMAGES,
+    ...OG_BASE,
     title: `Services | ${SITE.name}`,
     description: shareDescription,
     url: `${SITE.url}/services`,

@@ -166,7 +166,7 @@ export const OFFERS: readonly Offer[] = [
     slug: "launch-sprint",
     href: "/services/launch-sprint",
     name: "Launch sprint",
-    title: "A launch page or small site, designed and built in 10 working days",
+    title: "A launch page in 10 working days, or a small site in 3 weeks",
     summary:
       "One design direction, copy edited from your facts, forms wired to your CRM, analytics, on-page SEO and a speed pass. You own the hosting.",
     fromUsd: 1800,
@@ -440,7 +440,7 @@ export const ENGINEERING_SERVICES: readonly EngineeringService[] = [
     description:
       "Validate before you invest. We build lean, functional products designed to test your hypothesis with real users. Fast to market, built to learn.",
     features: [
-      "Landing pages with waitlists",
+      "Waitlist and sign-up flows inside the product",
       "Functional prototypes",
       "V1 products ready for early adopters",
       "Built for iteration, not perfection",
